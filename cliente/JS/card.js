@@ -1,5 +1,5 @@
 import XHR,{} from "./xhr.js";
-import {getFetchPromise,getFetchAsyn} from "./fetch.js";
+import {getFetchPromise} from "./fetch.js";
 
 
 const API="http://localhost:3000/superHeroes";
@@ -15,7 +15,7 @@ let data=[];
 //     crearTarjetas(data,contenedorCards);
 
 // });
-crearTarjetas(await getFetchAsyn(API),contenedorCards);
+getFetchPromise(API,(res)=> crearTarjetas(res,contenedorCards));
 
 
 function crearTarjetas(datos,contenedor){

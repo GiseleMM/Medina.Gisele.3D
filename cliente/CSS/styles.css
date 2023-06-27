@@ -46,6 +46,9 @@ article{
 }
 
 form{
+    display:flex;
+    flex-direction: column;
+  padding: 5px;
     backdrop-filter: blur(10px);
     color:var(--verde);
     border-radius: 5px;

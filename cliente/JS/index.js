@@ -38,8 +38,9 @@ XHR.get(API,(res)=>{
 document.querySelector("#section-tabla").appendChild(crearTabla(lista));
 let k = Object.keys(lista[0]);
 crearCheckbox($contenedorCheckboxControl, k);
-// calcularPromedio(lista);
+
 crearOptionesSelect($selectFiltros,["MARVEL","DC"]);
+calcularPromedio(lista);
 });
 
 //CREO VALOR DE SPAN PARA FOOTER
@@ -295,7 +296,7 @@ document.addEventListener("change", (e) => {
   function calcularPromedio(dato) {
     if (dato.length == 0) return 0;
     const selecValue = document.getElementById("select-filtros").value;
-    alert(selecValue);
+   
     if (selecValue.toLowerCase() == "todos") {
       let total = dato.map(({ fuerza }) => parseFloat(fuerza)).reduce((acum, act) => acum + act);
       return total / dato.length;
