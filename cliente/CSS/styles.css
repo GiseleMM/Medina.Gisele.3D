@@ -1,0 +1,70 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 70%;
+}
+
+
+:root{
+    --fondoRosa: rgb(255, 0, 96);
+    --cabeceraFooterAzul:rgb(0, 121, 255);
+    --verde:  rgb(0, 223, 162);
+    --amarillo:rgb(255, 237, 0);
+}
+
+
+header{
+    background-color: var(--cabeceraFooterAzul);
+   
+}
+main{
+    width: 100%;
+    height: min(100vh);
+    margin: 0;
+    color:var(--verde);
+    background-color: var(--fondoRosa);
+    background-image: url("../img/spiderman-gd3c7c6227_640.png");
+}
+article{
+   
+    color:var(--verde);
+    border-radius: 20%;
+ 
+    backdrop-filter: blur(10px);
+}
+#container-cards > article > div.card-body > ul > li{
+    color:var(--verde);
+    background-color: transparent;
+    border-bottom: thin solid var(--amarillo);
+}
+#container-cards > article:hover{
+  border: thin solid var(--amarillo);
+}
+
+form{
+    backdrop-filter: blur(10px);
+    color:var(--verde);
+    border-radius: 5px;
+    box-shadow: 1px 2px 0 var(--amarillo);
+    margin:2rem;
+}
+  
+  footer{
+    background-color: var(--cabeceraFooterAzul);
+    color: var(--verde);
+  }
+
+
+
+
+/* mas ancho q celular */
+@media screen and (width>700px) {
+    html{
+    font-size: 100%;
+    
+}
+}

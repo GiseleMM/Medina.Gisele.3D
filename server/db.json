@@ -1,0 +1,54 @@
+{
+  "superHeroes": [
+    {
+      "id": 1,
+      "nombre": "Bruce",
+      "alias": "Hulk",
+      "fuerza": 15,
+      "editorial": "MARVEL",
+      "armas": "armadura"
+    },
+    {
+      "id": 3,
+      "nombre": "Diana",
+      "alias": "mujer maravilla",
+      "fuerza": 9,
+      "editorial": "MARVEL",
+      "armas": "espada"
+    },
+    {
+      "id": 4,
+      "nombre": "Robin",
+      "alias": "Hood",
+      "fuerza": 16,
+      "editorial": "DC",
+      "armas": "flechas"
+    }
+  ],
+  "armas": [
+    {
+      "nombre": "armadura",
+      "id": 1
+    },
+    {
+      "nombre": "espada",
+      "id": 2
+    },
+    {
+      "nombre": "martillo",
+      "id": 3
+    },
+    {
+      "nombre": "escudo",
+      "id": 4
+    },
+    {
+      "nombre": "arma de fuego",
+      "id": 5
+    },
+    {
+      "nombre": "flechas",
+      "id": 6
+    }
+  ]
+}

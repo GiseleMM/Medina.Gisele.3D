@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- MI CSS -->
+        <link rel="stylesheet" href="./CSS/styles.css">
+
+
+
+    <script src="./JS/index.js" type="module"></script>
+    <!-- PARA ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ICONOS
+    <i class="fa-solid fa-check" style="color: #040c04;"></i>  cheket
+    <i class="fa-brands fa-github"></i>                        github
+    <i class="fa-solid fa-xmark"></i>                              cruz
+    <i class="fa-solid fa-spinner fa-spin"></i>             spiner ginardo
+    <i class="fa-regular fa-moon"></i>                      luna
+    <i class="fa-solid fa-trash-can"></i>                       tacho de basura
+    <i class="fa-solid fa-circle-arrow-right"></i>              play
+    <i class="fa-solid fa-circle-arrow-left"></i>               <
+    <i class="fa-solid fa-mask"></i>                           mascara        
+<i class="fa-solid fa-dollar-sign"></i>    DOLAR
+<i class="fa-solid fa-robot"></i>                           ROBOT
+<i class="fa-solid fa-heart-pulse"></i>                     corazon 
+<i class="fa-regular fa-user"></i>                      USER
+    -->
+
+    <title>SuperHEROES</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="row text-center">
+            <div class="col-12 col-md-6 ">
+                <img src="./img/1380756_comic_hero_superhero_wolverine_icon.png" alt="LOGO" class="w-25">
+            </div>
+            <nav class="col-12 col-md-6" >
+                <ul class="nav flex-column flex-md-row">
+                    <li class="nav-item"><a class="nav-link link-danger"href="./index.html">Home</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link link-danger" href="#">Administracion</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link link-danger" href="#">Blog</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link link-danger" href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>    
+    </div>
+    <main class="container-fluid mx-0" id="main-app">
+      
+            <!-- subtitulo dinamico  -->
+            <div class="row">
+                <div class="col justify-content-center align-item-center text-center">
+                    <h2 class="display-1" id="subtitulo">Crud</h2>
+                </div>
+            </div>
+         
+
+            <div class="d-flex flex-column flex-md-row">
+                    
+            <form action="" name="form-crud" >
+                <legend>Informacion del Super Heroe</legend>
+
+
+                <label for="nombre"> <i class="fa-regular fa-user"></i>&nbsp; Nombre</label>
+                <input type="text" name="txtNombre" placeholder="nombre" title="nombre" id="nombre" required>
+
+
+                <label for="alias"> <i class="fa-solid fa-mask"></i>&nbsp; Alias </label>
+                <input type="text" name="txtAlias" placeholder="Alias" title="max 255 caracteres" maxlength="255"
+                    id="alias" required>
+                <fieldset>
+                    <legend>Editorial</legend>
+                    <!-- COLOCAR REQUIRED Y TODO LO DEMAS -->
+                    <input type="radio" name="rdoEditorial" value="MARVEL" checked>MARVEL
+                    <input type="radio" name="rdoEditorial" value="DC">DC
+                </fieldset>
+                <label for="fuerza"><i class="fa-solid fa-heart-pulse"></i> &nbsp; Fuerza</label>
+                <input type="range" name="rangeFuerza" min="0" max="50" title="cantidad de fuerza" required>
+                <small id="fuerzaSmall"></small>
+                <label for="arma"> <i class="fa-solid fa-robot"></i> &nbsp; Arma</label>
+                <select name="selecArmas" id="arma">
+
+                </select>
+                <!-- DEBEN ESTAR OCULTOS SPINER ELIMINAR Y CANCELAR -->
+                    <!-- <i class="fa-solid fa-dragon fa-flip"></i> -->
+                    <div id="spinner" class="col d-none">
+                        <img src="./img/1475.gif" alt="loader">
+                        </div>
+            
+
+                <dialog>
+                    <span id="span-mensaje"> </span>
+                </dialog>
+
+                <input type="button" value="ELIMINAR" name="btnEliminar" class="d-none btn-dark">
+                <input type="button" value="CANCELAR" name="btnCancelar" class="d-none btn-dark">
+
+                <input type="hidden" name="txtHidden" value="">
+                <button type="submit" value="GUARDAR" name="alta-modificacion" class="btn-dark"><i
+                        class="fa-solid fa-floppy-disk"></i>GUARDAR</button>
+
+
+            </form>
+            <div class="container">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <button type="button" title="configuracion de tabla" data-bs-toggle="collapse"
+                            data-bs-target="#collapse-control-tabla" class="btn-dark p-2"><i class="fa-solid fa-gear"></i></button>
+                        <div class="collapse" id="collapse-control-tabla">
+                            <form action="" name="form-control-tabla">
+                                <fieldset>
+                                    <legend>filtros</legend>
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <select name="select-filtros" id="select-filtros" class="form-select">
+                                            </select>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <input type="text" name="result-promedio" id="result-promedio" class="form-control">
+                                            <label for="result-promedio">promedio</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>campos a mostrar</legend>
+                                    <div class="d-flex flex-row" id="control-tabla-checkbox">
+
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <section id="section-tabla" class="col"></section>
+                </div>
+            </div>
+
+            </div>
+      
+   
+            
+
+        </div>
+
+    </main>
+    <div class="container-fluid">
+
+
+
+
+
+    </div>
+    <footer class="row">
+  
+<div class="col">
+    <ul class="nav flex-column flex-md-row">
+        <li class="nav-item"><a class="nav-link link-danger" href="#">Home </a></li>
+        <li class="nav-item"><a class="nav-link link-danger" href="#">Personajes</a></li>
+        <li class="nav-item"><a class="nav-link link-danger" href="#">Blog</a></li>
+        <li class="nav-item"><a class="nav-link link-danger" href="#">contacto</a></li>
+    </ul>
+</div>
+      
+        <p class="col"> Laboratorio III Todos los derechos reservados<span id="span-footer-fecha"></span>&copy;</p>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
