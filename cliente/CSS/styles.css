@@ -33,18 +33,40 @@ article{
    
     color:var(--verde);
     border-radius: 20%;
- 
     backdrop-filter: blur(10px);
 }
-#container-cards > article > div.card-body > ul > li{
+#container-cards > div > article > div.card-body > ul> li
+{
     color:var(--verde);
-    background-color: transparent;
-    border-bottom: thin solid var(--amarillo);
+    background-color: var(--amarillo);
+   
 }
 #container-cards > article:hover{
   border: thin solid var(--amarillo);
 }
-
+article:hover{
+    animation-duration: 2s;
+    animation-name: bordes-animados;
+}
+@keyframes bordes-animados{
+    0%{
+        box-shadow:-2px 0 3px var(--amarillo);
+    }
+    25%{
+        box-shadow:-0px -2px 3px var(--amarillo);
+    }
+    50%{
+        box-shadow:2px 0 3px var(--amarillo);
+    }
+    75%{
+        box-shadow:-0px 2px 3px var(--amarillo);
+    }
+    100%{
+        box-shadow:-2px -2px 3px var(--amarillo);
+        
+        box-shadow:2px 2px 3px var(--amarillo);
+    }
+}
 form{
     display:flex;
     flex-direction: column;
@@ -54,6 +76,9 @@ form{
     border-radius: 5px;
     box-shadow: 1px 2px 0 var(--amarillo);
     margin:2rem;
+}
+form input {
+    margin: 5px;
 }
   
   footer{

@@ -30,7 +30,7 @@ function crearTarjetas(datos,contenedor){
     divCol.classList.add("col","m-2");
   
     const article=document.createElement("ARTICLE");
-    article.classList.add("card","bg-transparent");
+    article.classList.add("card","bg-transparent","rounded","border-0");
   
     const divheader=document.createElement("DIV");
     divheader.classList.add("card-header");
