@@ -12,7 +12,7 @@
       "id": 3,
       "nombre": "Diana",
       "alias": "mujer maravilla",
-      "fuerza": 9,
+      "fuerza": 10,
       "editorial": "MARVEL",
       "armas": "espada"
     },
@@ -20,7 +20,7 @@
       "id": 4,
       "nombre": "Robin",
       "alias": "Hood",
-      "fuerza": 16,
+      "fuerza": 19,
       "editorial": "DC",
       "armas": "flechas"
     }

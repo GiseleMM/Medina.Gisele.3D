@@ -52,7 +52,7 @@ function crearTarjetas(datos,contenedor){
   divBody.appendChild(ul); //agrego el ul al body 
   article.appendChild(divBody);//agrego elbody al article
   divCol.appendChild(article); // agrego el article al div col
-  frag.appendChild(article);//agrego al fragmento todo
+  frag.appendChild(divCol);//agrego al fragmento todo
   
 
 

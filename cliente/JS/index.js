@@ -17,7 +17,7 @@ const $resulPromedio = document.getElementById("result-promedio");
 console.log($contenedorTabla);
 // ["armadura","espada","martillo","escudo","arma de fuego", "flechas" ];
 
-//TRAIGO ARMAS PARA CONTRUIR EL FORM
+//TRAIGO ARMAS PARA CONSTRUIR EL FORM
 //CARGO SELECT
 // cargarSelect(traerDatos("armas"));
 XHR.get(ARMAS,(res)=>{
@@ -40,10 +40,11 @@ let k = Object.keys(lista[0]);
 crearCheckbox($contenedorCheckboxControl, k);
 
 crearOptionesSelect($selectFiltros,["MARVEL","DC"]);
-calcularPromedio(lista);
+cargarResultPromedio($resulPromedio,calcularPromedio(lista));
+
 });
 
-//CREO VALOR DE SPAN PARA FOOTER
+//CREO VALOR DE SPAN FECHA  PARA FOOTER
 const fecha=new Date().getFullYear();
 document.getElementById("span-footer-fecha").textContent=fecha.toString();
 
@@ -94,7 +95,7 @@ $formulario.addEventListener("submit", e => {
                 console.log(nuevo);
               
                 handlerAlta(nuevo);
-                actualizarSubtitulo("Modificar");
+                // actualizarSubtitulo("Modificar");
                 resetFormulario();
 
             }
@@ -119,7 +120,7 @@ function handlerAlta(obj) {
       const aux = new SuperHeroe(res.id,res.nombre,res.rangeFuerza,res.alias,res.rdoEditorial,res.armas);
       lista.push(aux);
       console.log(lista);
-      actualizarTabla(contenedorTabla, lista);
+      actualizarTabla($contenedorTabla, lista);
   
     }).catch(e => console.error(e));
   
@@ -162,13 +163,13 @@ function actualizarSubtitulo(texto){
 
 
 function ordenarDatosPorNumericos(criterio) {
-    const copia = [...listaLS];
+    const copia = [...lista];
      copia.sort((a, b) => a[criterio] - b[criterio]);
     return copia;
 
 }
 function ordenarDatosPorString(criterio) {
-    const copia = [...listaLS];
+    const copia = [...lista];
      copia.sort((a, b) =>{
   
         return a[criterio].localeCompare(b[criterio])
@@ -224,21 +225,20 @@ document.addEventListener("click", event => {
         // alert(emisor.textContent);
         switch (emisor.textContent) {
             case "nombre":
-                actualizarTabla(ordenarDatosPorNombre());
-
+         
+                actualizarTabla($contenedorTabla,ordenarDatosPorNombre());
                 break;
             case "alias":
-                actualizarTabla(ordenarDatosPorAlias());
+                actualizarTabla($contenedorTabla,ordenarDatosPorAlias());
                 break;
             case "armas":
-                actualizarTabla(ordenarDatosPorArmas());
+                actualizarTabla($contenedorTabla,ordenarDatosPorArmas());
                 break;
             case "fuerza":
-                actualizarTabla(ordenarDatosPorFuerza());
+                actualizarTabla($contenedorTabla,ordenarDatosPorFuerza());
                 break;
                 case "editorial":
-                    actualizarTabla(ordenarDatosPorEditorial());
-
+                    actualizarTabla($contenedorTabla,ordenarDatosPorEditorial());
             default:
                 break;
         }
