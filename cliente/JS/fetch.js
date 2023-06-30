@@ -1,6 +1,9 @@
+import { mostrarSpinner, ocultarSpinner } from "./formulario.js";
 
+mostrarSpinner();
 
 function fetchConfig(opciones) {
+    mostrarSpinner();
     let { method, url, data } = opciones;
     let conf = {
         method: method || "get",
@@ -11,19 +14,23 @@ function fetchConfig(opciones) {
     }
     return fetch(url, conf);
 }
-export async function getFetchAsyn(url) {
+export async function getFetchAsync(url) {
 
     try {
 
         let res = await fetchConfig({ method: "get", "url": url });
         if (!res.ok) throw Error({ "status": res.status });
+        
         return await res.json();
+
 
     } catch (e) {
         console.error(e);
+    }finally{
+        ocultarSpinner();
     }
 }
-async function putFetchAsyn(url, data) {
+export async function putFetchAsync(url, data) {
 
     try {
 
@@ -33,9 +40,11 @@ async function putFetchAsyn(url, data) {
 
     } catch (e) {
         console.error(e);
+    }finally{
+        ocultarSpinner();
     }
 }
-async function postFetchAsyn(url) {
+export async function postFetchAsync(url,data) {
 
     try {
 
@@ -45,9 +54,11 @@ async function postFetchAsyn(url) {
 
     } catch (e) {
         console.error(e);
+    }finally{
+        ocultarSpinner();
     }
 }
-async function deleteFetchAsyn(url, id) {
+export async function deleteFetchAsync(url, id) {
 
     try {
 
@@ -57,10 +68,12 @@ async function deleteFetchAsyn(url, id) {
 
     } catch (e) {
         console.error(e);
+    }finally{
+        ocultarSpinner();
     }
 }
 //exito callback
-export function getFetchPromise(url, exito) {
+export function getFetchCallback(url, exito) {
     const p = fetchConfig({ method: "get", "url": url });
     p.then((res) => {
         if (res.ok) {
@@ -70,10 +83,20 @@ export function getFetchPromise(url, exito) {
         }
     })
     .then((data) => exito(data))
-    .catch(e => console.error(e.status));
+    .catch(e => console.error(e.status))
+    .finally(()=>ocultarSpinner());
 }
-export function postFetchPromise(url, exito,alta) {
-    const p = fetchConfig({ method: "post", "url": url,"data":alta });
+export function getFetchPromise(url){
+  return new Promise((exito,error)=>{
+    const p = fetchConfig({ method:"get", "url": url});
+    p.then(res=> res.ok?res.json():Promise.reject(res))
+    .then(data=>exito(data))
+    .catch(e=>error({"status":e.status}))
+    .finally(()=>ocultarSpinner());
+  });
+}
+export function postFetchCallback(url, exito,alta) {
+    const p = fetchConfig({ method:"post", "url": url+"/"+alta.id,"data":alta});
     p.then((res) => {
         if (res.ok) {
             return res.json();
@@ -82,10 +105,47 @@ export function postFetchPromise(url, exito,alta) {
         }
     })
     .then((data) => exito(data))
-    .catch(e => console.error(e.status));
+    .catch(e => console.error(e.status))
+    .finally(()=>ocultarSpinner());
 }
+export function postFetchPromise(url,alta){
+    return new Promise(function (exito,error){
+        const p = fetchConfig({ method:"post", "url": url+"/"+alta.id,"data":alta});
+        p.then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                Promise.reject(res);
+            }
+        })
+        .then((data) => exito(data))
+        .catch(e => error(e.status))
+        .finally(()=>ocultarSpinner());
 
+    })
+
+}
 export function deleteFetchPromise(url,id) {
+    return new Promise(function(exito,error){
+
+        const p = fetchConfig({ method: "delete", "url": url+"/"+id });
+        p.then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                Promise.reject(res);
+            }
+        })
+        .then((data) => exito(data))
+        .catch(e => error(e.status))
+        .finally(()=>ocultarSpinner());
+
+
+
+    });
+  
+}
+export function deleteFetchCallback(url,id,exito){
     const p = fetchConfig({ method: "delete", "url": url+"/"+id });
     p.then((res) => {
         if (res.ok) {
@@ -95,10 +155,13 @@ export function deleteFetchPromise(url,id) {
         }
     })
     .then((data) => exito(data))
-    .catch(e => console.error(e.status));
+    .catch(e => console.error(e.status))
+    .finally(()=>ocultarSpinner());
+
+
 }
 
-export function putFetchPromise(url, exito,modificado) {
+export function putFetchCallback(url, exito,modificado) {
     const p = fetchConfig({ method: "put", "url": url+"/"+modificado.id,"data":modificado });
     p.then((res) => {
         if (res.ok) {
@@ -108,5 +171,22 @@ export function putFetchPromise(url, exito,modificado) {
         }
     })
     .then((data) => exito(data))
-    .catch(e => console.error(e.status));
+    .catch(e => console.error(e.status))
+    .finally(()=>ocultarSpinner());
+}
+export function putFetchPromise(url,modificado){
+    return new Promise(function(exito,error){
+        const p = fetchConfig({ method: "put", "url": url+"/"+modificado.id,"data":modificado });
+        p.then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                Promise.reject(res);
+            }
+        })
+        .then((data) => exito(data))
+        .catch(e => error(e.status))
+        .finally(()=>ocultarSpinner());
+
+    });
 }
